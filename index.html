@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberdrone Pilot Apps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+        }
+        .half {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .half:nth-child(odd) {
+            background-color: #e74c3c;
+        }
+        .half:nth-child(even) {
+            background-color: #000;
+        }
+        .button {
+            padding: 20px 40px;
+            font-size: 20px;
+            color: #e74c3c;
+            background-color: #000;
+            border: 2px solid #e74c3c;
+            border-radius: 30px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        .button:hover {
+            color: #fff;
+            background-color: #e74c3c;
+            transform: scale(1.1);
+        }
+        
+        /* Glitch Effect */
+        .button::before,
+        .button::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #e74c3c;
+            z-index: -1;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            display: block;
+            clip: rect(0, 0, 0, 0);
+            transition: all 0.3s ease;
+        }
+        
+        .button::before {
+            text-shadow: 1px 0 red, -1px 0 blue;
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+        
+        .button::after {
+            text-shadow: 2px 0 red, -2px 0 blue;
+            animation: glitch 1s infinite linear alternate-reverse 0.2s;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(2px, 0);
+            }
+            25% {
+                transform: translate(-3px, 3px);
+            }
+            50% {
+                transform: translate(5px, -3px);
+            }
+            75% {
+                transform: translate(-2px, -4px);
+            }
+            100% {
+                transform: translate(3px, 2px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .half {
+                width: 100%;
+                height: 50vh;
+            }
+            .button {
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="half">
+            <a href="https://eminozuak.github.io/koordinatcevirici/" target="_blank">
+                <button class="button" data-text="Link 1">Koordinat Çevirici</button>
+            </a>
+        </div>
+        <div class="half">
+            <a href="https://eminozuak.github.io/alanhesaplayici" target="_blank">
+                <button class="button" data-text="Link 2">Dizilim Yapıcı</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
